@@ -1,10 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import Navbar from './component/Navbar';
 
 function App() {
   return (
     <div className="App">
-     <h1>Developed by LABI KHAN</h1>
+     <Navbar />
     </div>
   );
 }
