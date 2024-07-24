@@ -6,13 +6,19 @@ export class NewsComponent extends Component {
     return (
       <div>
         <div className='row'>
-        <div className='col-md-3'>
-
-        
+        <div className='col-md-3 my-3'>
         <NewsItem dec={"Description"} title={"Title"}/>
+        </div>
+        <div className='col-md-3 my-3'>
         <NewsItem dec={"Description"} title={"Title"}/>
+        </div>
+        <div className='col-md-3 my-3'>
         <NewsItem dec={"Description"} title={"Title"}/>
+        </div>
+        <div className='col-md-3 my-3'>
         <NewsItem dec={"Description"} title={"Title"}/>
+        </div>
+        <div className='col-md-3 my-3'>
         <NewsItem dec={"Description"} title={"Title"}/>
         </div>
         </div>
