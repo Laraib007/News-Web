@@ -6,7 +6,7 @@ export class NewsComponent extends Component {
     return (
       <div>
         
-        <NewsItem dec={"Decription"}/>
+        <NewsItem dec={"Description"} title={"Title"}/>
       </div>
     )
   }
