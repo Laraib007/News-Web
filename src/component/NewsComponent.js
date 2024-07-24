@@ -5,6 +5,7 @@ export class NewsComponent extends Component {
   render() {
     return (
       <div>
+        <h1>News Talks - All Top Headlines</h1>
         <div className='row'>
         <div className='col-md-3 my-3'>
         <NewsItem dec={"Description"} title={"Title"}/>
