@@ -125,7 +125,9 @@ export class NewsComponent extends Component {
 }
   ]
 
- 
+  constructor(){
+  
+    }
   }
   render() {
     return (
