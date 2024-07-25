@@ -128,7 +128,8 @@ export class NewsComponent extends Component {
   constructor(){
     super()
     this.state ={
-      
+      articles: this.articles,
+      loading: false
     }
   }
   render() {
