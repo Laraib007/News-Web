@@ -145,7 +145,11 @@ export class NewsComponent extends Component {
       loading: false
     }
   }
-   
+    async componentDidMount() {
+      let data = await fetch('https://newsapi.org/v2/top-headlines?q=in&apiKey=e98033f9dc4145e7a23f605a8fe60d1c')
+      let parsedData = await data.json()
+      this.setState({articles: parsedData.articles})
+    }
   
   render() {
     return (
