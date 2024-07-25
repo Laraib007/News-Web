@@ -138,7 +138,7 @@ export class NewsComponent extends Component {
         <h1>News Talks - All Top Headlines</h1>
         <div className='row'>
           {this.state.articles.map((element)=>{
-             <div className='col-md-3 my-3'>
+            return <div className='col-md-3 my-3'>
              <NewsItem dec={element.description} title={element.title} imgUrl={element.urlToImage}/>
              </div>
           })}
