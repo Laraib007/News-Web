@@ -126,7 +126,8 @@ export class NewsComponent extends Component {
   ]
 
   constructor(){
-  
+    super()
+    
     }
   }
   render() {
