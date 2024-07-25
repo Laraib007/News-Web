@@ -127,7 +127,8 @@ export class NewsComponent extends Component {
 
   constructor(){
     super()
-    
+    this.state ={
+      
     }
   }
   render() {
