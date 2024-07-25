@@ -137,21 +137,12 @@ export class NewsComponent extends Component {
       <div>
         <h1>News Talks - All Top Headlines</h1>
         <div className='row'>
-        <div className='col-md-3 my-3'>
-        <NewsItem dec={"Description"} title={"Title"}/>
-        </div>
-        <div className='col-md-3 my-3'>
-        <NewsItem dec={"Description"} title={"Title"}/>
-        </div>
-        <div className='col-md-3 my-3'>
-        <NewsItem dec={"Description"} title={"Title"}/>
-        </div>
-        <div className='col-md-3 my-3'>
-        <NewsItem dec={"Description"} title={"Title"}/>
-        </div>
-        <div className='col-md-3 my-3'>
-        <NewsItem dec={"Description"} title={"Title"}/>
-        </div>
+          {this.state.articles.map((element)=>{
+             <div className='col-md-3 my-3'>
+             <NewsItem dec={element.description} title={element.title} imgUrl={element.urlToImage}/>
+             </div>
+          })}
+       
         </div>
       </div>
     )
