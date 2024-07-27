@@ -20,11 +20,11 @@ export class NewsComponent extends Component {
     }
 
     clickNextHandler= async()=>{
-        console.log("Pervious")
+        console.log("Next")
     }
 
  clickPrevHandler= async()=>{
-console.log("Next")
+console.log("Pervious")
     }
 
 
@@ -43,8 +43,8 @@ console.log("Next")
           })}
         </div>
         <div className='container d-flex justify-content-around'>
-        <button disabled={this.state.page <= 1} type="button" class="btn btn-dark" onClick={clickPrevHandler}>Pervious</button>
-        <button type="button" class="btn btn-dark " onClick={clickNextHandler}>Next</button>
+        <button disabled={this.state.page <= 1} type="button" class="btn btn-dark" onClick={this.clickPrevHandler}>Pervious</button>
+        <button type="button" class="btn btn-dark " onClick={this.clickNextHandler}>Next</button>
         </div>
       </div>
     )
