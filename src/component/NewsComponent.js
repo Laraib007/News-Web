@@ -16,26 +16,36 @@ export class NewsComponent extends Component {
   }
     async componentDidMount() {
       let data = await fetch(`https://newsapi.org/v2/top-headlines?q=in&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=1&pageSize=${this.props.pageSize}`)
+      this.setState({loading: true})
       let parsedData = await data.json()
-      this.setState({articles: parsedData.articles, totalResults: parsedData.totalResults})
+      this.setState({
+        articles: parsedData.articles, 
+        totalResults: parsedData.totalResults,
+        loading: false
+      })
     }
 
     clickNextHandler= async()=>{
-      if( Math.ceil(this.state.page + 1>this.state.totalResults/20)){}
+      if(!( Math.ceil(this.state.page + 1>this.state.totalResults/20))){
       let data = await fetch(`https://newsapi.org/v2/top-headlines?q=in&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`)
+      this.setState({loading: true})
       let parsedData = await data.json()
   this.setState({
     page: this.state.page + 1,
-    articles: parsedData.articles
+    articles: parsedData.articles,
+    loading: false
   })
+}
     }
 
  clickPrevHandler= async()=>{
   let data = await fetch(`https://newsapi.org/v2/top-headlines?q=in&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`)
+  this.setState({loading: true})
   let parsedData = await data.json()
 this.setState({
 page: this.state.page - 1,
-articles: parsedData.articles
+articles: parsedData.articles,
+loading: false
 })
     }
 
@@ -46,8 +56,9 @@ articles: parsedData.articles
   render() {
     return (
       <div>
-        <Spinner/>
+        
         <h1>News Talks - All Top Headlines</h1>
+        {this.state.loading && <Spinner/>}
         <div className='row'>
           {this.state.articles.map((element)=>{
             return <div className='col-md-3 my-3'>

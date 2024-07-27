@@ -5,7 +5,7 @@ import loader from './loader.gif'
 export class Spinner extends Component {
   render() {
     return (
-      <div>
+      <div className='align-middle'>
         <img src={loader} alt='loading'></img>
       </div>
     )
