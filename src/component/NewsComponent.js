@@ -29,7 +29,10 @@ export class NewsComponent extends Component {
              <NewsItem dec={element.description?element.description.slice(0, 88)+"...":""} title={element.title?element.title.slice(0, 25)+"...":""} imgUrl={element.urlToImage} url={element.url}/>
              </div>
           })}
-       
+        </div>
+        <div className='container'>
+        <button type="button" class="btn btn-dark">Dark</button>
+        <button type="button" class="btn btn-dark">Dark</button>
         </div>
       </div>
     )
