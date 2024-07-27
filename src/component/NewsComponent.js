@@ -31,7 +31,7 @@ export class NewsComponent extends Component {
           })}
         </div>
         <div className='container d-flex justify-content-around'>
-        <button type="button" class="btn btn-dark">Pervious</button>
+        <button disabled={this.state.page <= 1} type="button" class="btn btn-dark">Pervious</button>
         <button type="button" class="btn btn-dark ">Next</button>
         </div>
       </div>
