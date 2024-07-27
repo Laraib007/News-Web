@@ -30,9 +30,9 @@ export class NewsComponent extends Component {
              </div>
           })}
         </div>
-        <div className='container'>
-        <button type="button" class="btn btn-dark">Dark</button>
-        <button type="button" class="btn btn-dark">Dark</button>
+        <div className='container d-flex justify-content-around'>
+        <button type="button" class="btn btn-dark">Pervious</button>
+        <button type="button" class="btn btn-dark ">Next</button>
         </div>
       </div>
     )
