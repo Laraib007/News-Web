@@ -9,7 +9,8 @@ export class NewsComponent extends Component {
     super()
     this.state ={
       articles: [],
-      loading: false
+      loading: false,
+      page:1
     }
   }
     async componentDidMount() {
