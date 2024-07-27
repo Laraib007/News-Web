@@ -20,11 +20,21 @@ export class NewsComponent extends Component {
     }
 
     clickNextHandler= async()=>{
-        console.log("Next")
+      let data = await fetch(`https://newsapi.org/v2/top-headlines?q=in&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=${this.state.page + 1}`)
+      let parsedData = await data.json()
+  this.setState({
+    page: this.state.page + 1,
+    articles: parsedData.articles
+  })
     }
 
  clickPrevHandler= async()=>{
-console.log("Pervious")
+  let data = await fetch(`https://newsapi.org/v2/top-headlines?q=in&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=${this.state.page - 1}`)
+  let parsedData = await data.json()
+this.setState({
+page: this.state.page - 1,
+articles: parsedData.articles
+})
     }
 
 
