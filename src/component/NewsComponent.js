@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import NewsItem from './NewsItem'
+import Spinner from './Spinner'
 
 
 
@@ -45,6 +46,7 @@ articles: parsedData.articles
   render() {
     return (
       <div>
+        <Spinner/>
         <h1>News Talks - All Top Headlines</h1>
         <div className='row'>
           {this.state.articles.map((element)=>{
