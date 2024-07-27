@@ -18,6 +18,18 @@ export class NewsComponent extends Component {
       let parsedData = await data.json()
       this.setState({articles: parsedData.articles})
     }
+
+    clickNextHandler= async()=>{
+        console.log("Pervious")
+    }
+
+ clickPrevHandler= async()=>{
+console.log("Next")
+    }
+
+
+
+
   
   render() {
     return (
@@ -31,8 +43,8 @@ export class NewsComponent extends Component {
           })}
         </div>
         <div className='container d-flex justify-content-around'>
-        <button disabled={this.state.page <= 1} type="button" class="btn btn-dark">Pervious</button>
-        <button type="button" class="btn btn-dark ">Next</button>
+        <button disabled={this.state.page <= 1} type="button" class="btn btn-dark" onClick={clickPrevHandler}>Pervious</button>
+        <button type="button" class="btn btn-dark " onClick={clickNextHandler}>Next</button>
         </div>
       </div>
     )
