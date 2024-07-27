@@ -16,10 +16,11 @@ export class NewsComponent extends Component {
     async componentDidMount() {
       let data = await fetch('https://newsapi.org/v2/top-headlines?q=in&apiKey=e98033f9dc4145e7a23f605a8fe60d1c')
       let parsedData = await data.json()
-      this.setState({articles: parsedData.articles})
+      this.setState({articles: parsedData.articles, totalResults: parsedData.totalResults})
     }
 
     clickNextHandler= async()=>{
+      if( Math.ceil(this.state.page + 1>this.state.totalResults/20)){}
       let data = await fetch(`https://newsapi.org/v2/top-headlines?q=in&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=${this.state.page + 1}`)
       let parsedData = await data.json()
   this.setState({
