@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
      <Navbar />
-     <NewsComponent />
+     <NewsComponent pageSize={8} />
     </div>
   );
 }

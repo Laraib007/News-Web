@@ -14,14 +14,14 @@ export class NewsComponent extends Component {
     }
   }
     async componentDidMount() {
-      let data = await fetch('https://newsapi.org/v2/top-headlines?q=in&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=1&pageSize=20')
+      let data = await fetch(`https://newsapi.org/v2/top-headlines?q=in&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=1&pageSize=${this.props.pageSize}`)
       let parsedData = await data.json()
       this.setState({articles: parsedData.articles, totalResults: parsedData.totalResults})
     }
 
     clickNextHandler= async()=>{
       if( Math.ceil(this.state.page + 1>this.state.totalResults/20)){}
-      let data = await fetch(`https://newsapi.org/v2/top-headlines?q=in&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=${this.state.page + 1}&pageSize=20`)
+      let data = await fetch(`https://newsapi.org/v2/top-headlines?q=in&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`)
       let parsedData = await data.json()
   this.setState({
     page: this.state.page + 1,
@@ -30,7 +30,7 @@ export class NewsComponent extends Component {
     }
 
  clickPrevHandler= async()=>{
-  let data = await fetch(`https://newsapi.org/v2/top-headlines?q=in&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=${this.state.page - 1}&pageSize=20`)
+  let data = await fetch(`https://newsapi.org/v2/top-headlines?q=in&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`)
   let parsedData = await data.json()
 this.setState({
 page: this.state.page - 1,
@@ -55,7 +55,7 @@ articles: parsedData.articles
         </div>
         <div className='container d-flex justify-content-around'>
         <button disabled={this.state.page <= 1} type="button" class="btn btn-dark" onClick={this.clickPrevHandler}>Pervious</button>
-        <button type="button" class="btn btn-dark " onClick={this.clickNextHandler}>Next</button>
+        <button disabled={this.state.page + 1>this.state.totalResults/this.props.pageSize} type="button" class="btn btn-dark " onClick={this.clickNextHandler}>Next</button>
         </div>
       </div>
     )
