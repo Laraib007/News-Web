@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 export class NewsComponent extends Component {
   static defaultProps = {
     country: "in",
-    pageSize: 8,
+    pageSize: 4,
     category: "science"
   }
 static propTypes ={
@@ -28,7 +28,7 @@ static propTypes ={
   }
     async componentDidMount() {
       this.setState({loading: true})
-      let data = await fetch(`https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=1&pageSize=${this.props.pageSize}`)
+      let data = await fetch(`https://newsapi.org/v2/top-headlines?apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=1&pageSize=${this.props.pageSize}`)
       
       let parsedData = await data.json()
       this.setState({
