@@ -1,11 +1,19 @@
 import React, { Component } from 'react'
 import NewsItem from './NewsItem'
 import Spinner from './Spinner'
+import PropTypes from 'prop-types'
 
 
 
 
 export class NewsComponent extends Component {
+  static defaultProps = {
+
+  }
+static PropTypes ={
+
+}
+
   constructor(){
     super()
     this.state ={
@@ -15,8 +23,9 @@ export class NewsComponent extends Component {
     }
   }
     async componentDidMount() {
-      let data = await fetch(`https://newsapi.org/v2/top-headlines?q=in&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=1&pageSize=${this.props.pageSize}`)
       this.setState({loading: true})
+      let data = await fetch(`https://newsapi.org/v2/top-headlines?q=in&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=1&pageSize=${this.props.pageSize}`)
+      
       let parsedData = await data.json()
       this.setState({
         articles: parsedData.articles, 
@@ -27,8 +36,9 @@ export class NewsComponent extends Component {
 
     clickNextHandler= async()=>{
       if(!( Math.ceil(this.state.page + 1>this.state.totalResults/20))){
+        this.setState({loading: true})
       let data = await fetch(`https://newsapi.org/v2/top-headlines?q=in&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`)
-      this.setState({loading: true})
+      
       let parsedData = await data.json()
   this.setState({
     page: this.state.page + 1,
@@ -39,8 +49,9 @@ export class NewsComponent extends Component {
     }
 
  clickPrevHandler= async()=>{
-  let data = await fetch(`https://newsapi.org/v2/top-headlines?q=in&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`)
   this.setState({loading: true})
+  let data = await fetch(`https://newsapi.org/v2/top-headlines?q=in&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`)
+ 
   let parsedData = await data.json()
 this.setState({
 page: this.state.page - 1,
@@ -60,7 +71,7 @@ loading: false
         <h1>News Talks - All Top Headlines</h1>
         {this.state.loading && <Spinner/>}
         <div className='row'>
-          {this.state.articles.map((element)=>{
+          {!this.state.loading && this.state.articles.map((element)=>{
             return <div className='col-md-3 my-3'>
              <NewsItem dec={element.description?element.description.slice(0, 88)+"...":""} title={element.title?element.title.slice(0, 25)+"...":""} imgUrl={element.urlToImage} url={element.url}/>
              </div>
