@@ -8,10 +8,12 @@ import PropTypes from 'prop-types'
 
 export class NewsComponent extends Component {
   static defaultProps = {
-
+    country: "in",
+    pageSize: 8
   }
 static PropTypes ={
-
+    country: PropTypes.string,
+    pageSize: PropTypes.number,
 }
 
   constructor(){
