@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 export class NewsComponent extends Component {
   static defaultProps = {
     country: "in",
-    pageSize: 4,
+    pageSize: 8,
     category: "science"
   }
 static propTypes ={
@@ -28,7 +28,7 @@ static propTypes ={
   }
     async componentDidMount() {
       this.setState({loading: true})
-      let data = await fetch(`https://newsapi.org/v2/top-headlines?apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=1&pageSize=${this.props.pageSize}`)
+      let data = await fetch(`https://newsapi.org/v2/top-headlines?q=${this.props.country}&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=1&pageSize=${this.props.pageSize}`)
       
       let parsedData = await data.json()
       this.setState({
@@ -41,7 +41,7 @@ static propTypes ={
     clickNextHandler= async()=>{
       if(!( Math.ceil(this.state.page + 1>this.state.totalResults/20))){
         this.setState({loading: true})
-      let data = await fetch(`https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`)
+      let data = await fetch(`https://newsapi.org/v2/top-headlines?q=${this.props.country}&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`)
       
       let parsedData = await data.json()
   this.setState({
@@ -54,7 +54,7 @@ static propTypes ={
 
  clickPrevHandler= async()=>{
   this.setState({loading: true})
-  let data = await fetch(`https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`)
+  let data = await fetch(`https://newsapi.org/v2/top-headlines?q=${this.props.country}&apiKey=e98033f9dc4145e7a23f605a8fe60d1c&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`)
  
   let parsedData = await data.json()
 this.setState({
