@@ -9,11 +9,13 @@ import PropTypes from 'prop-types'
 export class NewsComponent extends Component {
   static defaultProps = {
     country: "in",
-    pageSize: 8
+    pageSize: 8,
+    category: "science"
   }
-static PropTypes ={
+static propTypes ={
     country: PropTypes.string,
     pageSize: PropTypes.number,
+    category: PropTypes.string,
 }
 
   constructor(){
@@ -70,7 +72,7 @@ loading: false
     return (
       <div>
         
-        <h1>News Talks - All Top Headlines</h1>
+        <h1 className='my-4'>News Talks - All Top Headlines</h1>
         {this.state.loading && <Spinner/>}
         <div className='row'>
           {!this.state.loading && this.state.articles.map((element)=>{
