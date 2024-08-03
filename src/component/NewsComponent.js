@@ -63,11 +63,7 @@ articles: parsedData.articles,
 loading: false
 })
     }
-
-
-
-
-  
+    
   render() {
     return (
       <div>
